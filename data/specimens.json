@@ -1,0 +1,31 @@
+[
+    {
+        "id": "SINH-MA-835",
+        "category": "bear",
+
+        "name": "ヒグマ",
+
+        "scientificName": "Ursus arctos",
+
+        "part": "頭骨",
+
+        "location": "北海道",
+
+        "description": "ヒグマの頭骨3Dスキャンモデル。教育・研究用途を想定した3D標本データ。",
+
+        "model": "models/bear/SINH-MA-835.glb",
+
+        "downloads": [
+            {
+                "name": "STL",
+                "format": "STL",
+                "url": "downloads/bear/SINH-MA-835.stl"
+            },
+            {
+                "name": "3MF",
+                "format": "3MF",
+                "url": "downloads/bear/SINH-MA-835.3mf"
+            }
+        ]
+    }
+]
