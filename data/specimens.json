@@ -1,104 +1,94 @@
 [
-    {
-        "id": "SINH-MA-835",
-        "category": "bear",
-         "species": "brown-bear",
-        
-        "name": "ヒグマ",
-
-        "scientificName": "Ursus arctos",
-
-        "part": "頭骨",
-
-        "location": "北海道",
-
-        "description": "ヒグマの頭骨3Dスキャンモデル。教育・研究用途を想定した3D標本データ。",
-
-        "model": "models/bear/brown-bear/SINH-MA-835.gltf",
-
-        "downloads": [
-            {
-                "name": "STL",
-                "format": "STL",
-                "url": "downloads/bear/SINH-MA-835.stl"
-            },
-            {
-                "name": "3MF",
-                "format": "3MF",
-                "url": "downloads/bear/SINH-MA-835.3mf"
-            }
-        ]
-    }
-    {
-        "id": "SINH-MA-835",
-        "category": "bear",
-        "species": "asian-black-bear",
-        
-        "name": "ツキノワグマ",
-
-        "scientificName": "Ursus thibetanus",
-
-        "part": "頭骨",
-
-        "location": "北海道",
-
-        "description": "ヒグマの頭骨3Dスキャンモデル。教育・研究用途を想定した3D標本データ。",
-
-        "model": "models/bear/asian-black-bear/SINH-MA-770.gltf",
-
-        "downloads": [
-            {
-                "name": "STL",
-                "format": "STL",
-                "url": "downloads/bear/SINH-MA-770.stl"
-            },
-            {
-                "name": "3MF",
-                "format": "3MF",
-                "url": "downloads/bear/SINH-MA-770.3mf"
-            }
-        ]
-    }
-    {
-        "id": "SINH-MA-1339",
-        "category": "fox",
-        "name": "キタキツネ",
-        "scientificName": "Vulpes vulpes",
-        "part": "頭骨",
-        "location": "",
-        "description": "キタキツネの頭骨3Dスキャンモデル。",
-        "model": "models/kitsune/SINH-MA-1339.gltf",
-        "downloads": [ {
-                "name": "STL",
-                "format": "STL",
-                "url": "downloads/kitsune/SINH-MA-1339.stl"
-            },
-            {
-                "name": "3MF",
-                "format": "3MF",
-                "url": "downloads/kitsune/SINH-MA-1339.3mf"
-            }
-        ]
-    }
-    {
-        "id": "SINH-MA-1559",
-        "category": "serow",
-        "name": "ニホンカモシカ",
-        "scientificName": "Capricornis crispus",
-        "part": "頭骨",
-        "location": "",
-        "description": "ニホンカモシカの頭骨3Dスキャンモデル。",
-        "model": "models/kamoshika/SINH-MA-1559.gltf",
-        "downloads": [ {
-                "name": "STL",
-                "format": "STL",
-                "url": "downloads/kamoshika/SINH-MA-1559.stl"
-            },
-            {
-                "name": "3MF",
-                "format": "3MF",
-                "url": "downloads/kamoshika/SINH-MA-1559.3mf"
-            }
-        ]
-    }
+  {
+    "id": "SINH-MA-835",
+    "category": "bear",
+    "species": "brown-bear",
+    "name": "ヒグマ",
+    "scientificName": "Ursus arctos",
+    "part": "頭骨",
+    "location": "北海道",
+    "description": "ヒグマの頭骨3Dスキャンモデル。教育・研究用途を想定した3D標本データ。",
+    "model": "models/bear/brown-bear/SINH-MA-835.gltf",
+    "downloads": [
+      {
+        "name": "STL",
+        "format": "STL",
+        "url": "downloads/bear/SINH-MA-835.stl"
+      },
+      {
+        "name": "3MF",
+        "format": "3MF",
+        "url": "downloads/bear/SINH-MA-835.3mf"
+      }
+    ]
+  },
+  {
+    "id": "SINH-MA-770",
+    "category": "bear",
+    "species": "asian-black-bear",
+    "name": "ツキノワグマ",
+    "scientificName": "Ursus thibetanus",
+    "part": "頭骨",
+    "location": "北海道",
+    "description": "ツキノワグマの頭骨3Dスキャンモデル。教育・研究用途を想定した3D標本データ。",
+    "model": "models/bear/asian-black-bear/SINH-MA-770.gltf",
+    "downloads": [
+      {
+        "name": "STL",
+        "format": "STL",
+        "url": "downloads/bear/SINH-MA-770.stl"
+      },
+      {
+        "name": "3MF",
+        "format": "3MF",
+        "url": "downloads/bear/SINH-MA-770.3mf"
+      }
+    ]
+  },
+  {
+    "id": "SINH-MA-1339",
+    "category": "fox",
+    "species": "red-fox",
+    "name": "キタキツネ",
+    "scientificName": "Vulpes vulpes",
+    "part": "頭骨",
+    "location": "",
+    "description": "キタキツネの頭骨3Dスキャンモデル。",
+    "model": "models/kitsune/SINH-MA-1339.gltf",
+    "downloads": [
+      {
+        "name": "STL",
+        "format": "STL",
+        "url": "downloads/kitsune/SINH-MA-1339.stl"
+      },
+      {
+        "name": "3MF",
+        "format": "3MF",
+        "url": "downloads/kitsune/SINH-MA-1339.3mf"
+      }
+    ]
+  },
+  {
+    "id": "SINH-MA-1559",
+    "category": "serow",
+    "species": "japanese-serow",
+    "name": "ニホンカモシカ",
+    "scientificName": "Capricornis crispus",
+    "part": "頭骨",
+    "location": "",
+    "description": "ニホンカモシカの頭骨3Dスキャンモデル。",
+    "model": "models/kamoshika/SINH-MA-1559.gltf",
+    "downloads": [
+      {
+        "name": "STL",
+        "format": "STL",
+        "url": "downloads/kamoshika/SINH-MA-1559.stl"
+      },
+      {
+        "name": "3MF",
+        "format": "3MF",
+        "url": "downloads/kamoshika/SINH-MA-1559.3mf"
+      }
+    ]
+  }
 ]
