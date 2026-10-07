@@ -14,7 +14,7 @@
 
         "description": "ヒグマの頭骨3Dスキャンモデル。教育・研究用途を想定した3D標本データ。",
 
-        "model": "models/bear/SINH-MA-835.gltf",
+        "model": "models/bear/brown-bear/SINH-MA-835.gltf",
 
         "downloads": [
             {
@@ -44,7 +44,7 @@
 
         "description": "ヒグマの頭骨3Dスキャンモデル。教育・研究用途を想定した3D標本データ。",
 
-        "model": "models/bear/SINH-MA-770.gltf",
+        "model": "models/bear/asian-black-bear/SINH-MA-770.gltf",
 
         "downloads": [
             {
