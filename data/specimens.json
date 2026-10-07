@@ -2,7 +2,8 @@
     {
         "id": "SINH-MA-835",
         "category": "bear",
-
+         "species": "brown-bear",
+        
         "name": "ヒグマ",
 
         "scientificName": "Ursus arctos",
@@ -31,7 +32,8 @@
     {
         "id": "SINH-MA-835",
         "category": "bear",
-
+        "species": "asian-black-bear",
+        
         "name": "ツキノワグマ",
 
         "scientificName": "Ursus thibetanus",
