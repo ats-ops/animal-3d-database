@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Animal 3D Database</title>
 
@@ -11,136 +16,223 @@
         content="動物標本の3Dモデルを閲覧・ダウンロードできるデータベース"
     >
 
-    <link rel="stylesheet" href="css/style.css">
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
 
-    <!-- 3D表示 -->
+    <!-- Google Model Viewer -->
     <script
         type="module"
-        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
-    </script>
+        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
+    ></script>
 </head>
+
 
 <body>
 
-<header class="site-header">
-    <div class="header-inner">
-        <h1>Animal 3D Database</h1>
-        <p>動物標本3Dモデルデータベース</p>
-    </div>
-</header>
+    <!-- =========================
+         ヘッダー
+    ========================== -->
 
-<main>
+    <header class="site-header">
 
-    <!-- 検索 -->
-    <section class="search-section">
+        <div class="header-inner">
 
-        <input
-            type="search"
-            id="searchInput"
-            placeholder="動物名・標本番号で検索..."
-        >
+            <h1>
+                Animal 3D Database
+            </h1>
 
-    </section>
-
-    <!-- カテゴリ -->
-    <nav class="categories">
-
-        <button class="category-btn active" data-category="all">
-            すべて
-        </button>
-
-        <button class="category-btn" data-category="bear">
-            クマ
-        </button>
-
-        <button class="category-btn" data-category="fox">
-            キツネ
-        </button>
-
-        <button class="category-btn" data-category="raccoon-dog">
-            タヌキ
-        </button>
-
-        <button class="category-btn" data-category="deer">
-            シカ
-        </button>
-
-    </nav>
-
-    <!-- 標本一覧 -->
-    <section>
-
-        <div id="specimenGrid" class="specimen-grid">
-            <!-- JavaScriptで自動生成 -->
-        </div>
-
-        <p id="noResults" class="no-results hidden">
-            該当する標本がありません。
-        </p>
-
-    </section>
-
-</main>
-
-<!-- 3D表示モーダル -->
-<div id="viewerModal" class="modal hidden">
-
-    <div class="modal-content">
-
-        <button id="closeModal" class="close-button">
-            ×
-        </button>
-
-        <div class="viewer-area">
-
-            <model-viewer
-                id="modelViewer"
-                camera-controls
-                auto-rotate
-                shadow-intensity="1"
-                exposure="1"
-                environment-image="neutral"
-                ar
-                alt="3Dモデル">
-            </model-viewer>
+            <p>
+                動物標本3Dデータベース
+            </p>
 
         </div>
 
-        <div class="model-information">
+    </header>
 
-            <h2 id="modalTitle"></h2>
 
-            <p id="modalScientificName"></p>
+    <!-- =========================
+         メイン
+    ========================== -->
 
-            <dl>
+    <main class="container">
 
-                <div>
-                    <dt>標本番号</dt>
-                    <dd id="modalId"></dd>
+
+        <!-- =====================
+             検索
+        ====================== -->
+
+        <section class="search-section">
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="標本番号・動物名・学名などを検索"
+                autocomplete="off"
+            >
+
+        </section>
+
+
+        <!-- =====================
+             カテゴリ
+        ====================== -->
+
+        <section class="category-section">
+
+            <h2 class="section-title">
+                動物
+            </h2>
+
+            <!--
+                app.jsがここに
+                クマ / キツネ / タヌキ / シカ
+                などを自動生成
+            -->
+
+            <div
+                id="categoryButtons"
+                class="category-buttons"
+            ></div>
+
+        </section>
+
+
+        <!-- =====================
+             種
+        ====================== -->
+
+        <section class="species-section">
+
+            <!--
+                app.jsがここに
+
+                [すべて]
+                [ヒグマ]
+                [ツキノワグマ]
+
+                などを自動生成
+            -->
+
+            <div
+                id="speciesButtons"
+                class="species-buttons"
+            ></div>
+
+        </section>
+
+
+        <!-- =====================
+             標本一覧
+        ====================== -->
+
+        <section class="specimens-section">
+
+            <div
+                id="specimenGrid"
+                class="specimen-grid"
+            >
+
+                <!--
+                    app.jsによって
+                    ここに標本が表示される
+                -->
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================
+         3Dモデル詳細モーダル
+    ========================== -->
+
+    <div
+        id="viewerModal"
+        class="modal"
+    >
+
+        <div class="modal-content">
+
+
+            <!-- 閉じるボタン -->
+
+            <button
+                id="closeModal"
+                class="close-button"
+                aria-label="閉じる"
+            >
+                ×
+            </button>
+
+
+            <!-- =====================
+                 3Dビューア
+            ====================== -->
+
+            <div class="modal-viewer">
+
+                <model-viewer
+                    id="modalViewer"
+                    camera-controls
+                    auto-rotate
+                    shadow-intensity="1"
+                    ar
+                    ar-modes="webxr scene-viewer quick-look"
+                    touch-action="pan-y"
+                >
+                </model-viewer>
+
+            </div>
+
+
+            <!-- =====================
+                 標本情報
+            ====================== -->
+
+            <div class="modal-info">
+
+                <h2 id="modalTitle">
+                    標本
+                </h2>
+
+
+                <p
+                    id="modalScientificName"
+                    class="scientific-name"
+                >
+                </p>
+
+
+                <p id="modalPart">
+                </p>
+
+
+                <p id="modalLocation">
+                </p>
+
+
+                <p
+                    id="modalDescription"
+                    class="description"
+                >
+                </p>
+
+
+                <!-- =================
+                     ダウンロード
+                ================== -->
+
+                <div
+                    id="downloadButtons"
+                    class="download-buttons"
+                >
                 </div>
-
-                <div>
-                    <dt>部位</dt>
-                    <dd id="modalPart"></dd>
-                </div>
-
-                <div>
-                    <dt>採取地</dt>
-                    <dd id="modalLocation"></dd>
-                </div>
-
-                <div>
-                    <dt>備考</dt>
-                    <dd id="modalDescription"></dd>
-                </div>
-
-            </dl>
-
-            <div class="download-area">
-
-                <h3>3Dプリント用データ</h3>
-
-                <div id="downloadButtons"></div>
 
             </div>
 
@@ -148,21 +240,32 @@
 
     </div>
 
-</div>
 
-<footer>
+    <!-- =========================
+         フッター
+    ========================== -->
 
-    <p>
-        Animal 3D Database
-    </p>
+    <footer class="site-footer">
 
-    <p>
-        Educational / Research Project
-    </p>
+        <p>
+            Animal 3D Database
+        </p>
 
-</footer>
+        <p>
+            3D specimen data
+        </p>
 
-<script src="js/app.js"></script>
+    </footer>
+
+
+    <!-- =========================
+         JavaScript
+    ========================== -->
+
+    <script
+        src="js/app.js"
+    ></script>
 
 </body>
+
 </html>
