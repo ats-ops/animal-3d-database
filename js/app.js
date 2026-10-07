@@ -14,17 +14,20 @@ let currentSearch = "";
 // ==============================
 
 document.addEventListener("DOMContentLoaded", () => {
+
     loadSpecimens();
 
+    // 検索
     const searchInput = document.getElementById("searchInput");
 
     if (searchInput) {
         searchInput.addEventListener("input", (event) => {
-            currentSearch = event.target.value.toLowerCase();
+            currentSearch = event.target.value.toLowerCase().trim();
             renderSpecimens();
         });
     }
 
+    // モーダル閉じる
     const closeModal = document.getElementById("closeModal");
     const modal = document.getElementById("viewerModal");
 
@@ -40,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Escキー
     document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
             closeViewer();
@@ -53,19 +57,26 @@ document.addEventListener("DOMContentLoaded", () => {
 // ==============================
 
 async function loadSpecimens() {
+
     try {
+
         const response = await fetch("data/specimens.json");
 
         if (!response.ok) {
-            throw new Error("specimens.jsonの読み込みに失敗しました");
+            throw new Error(
+                `specimens.jsonの読み込みに失敗しました: ${response.status}`
+            );
         }
 
         specimens = await response.json();
+
+        console.log("標本データ:", specimens);
 
         createCategoryButtons();
         renderSpecimens();
 
     } catch (error) {
+
         console.error(error);
 
         const grid = document.getElementById("specimenGrid");
@@ -86,47 +97,57 @@ async function loadSpecimens() {
 // ==============================
 
 function createCategoryButtons() {
-    const container = document.getElementById("categoryButtons");
+
+    const container =
+        document.getElementById("categoryButtons");
 
     if (!container) return;
 
     container.innerHTML = "";
 
-    // 登録されているカテゴリを取得
-    const categories = [...new Set(
-        specimens.map(specimen => specimen.category)
-    )];
+    // 登録されているカテゴリ
+    const categories = [
+        ...new Set(
+            specimens.map(specimen => specimen.category)
+        )
+    ];
 
     // 「すべて」
-    const allButton = document.createElement("button");
+    const allButton =
+        document.createElement("button");
 
     allButton.textContent = "すべて";
     allButton.className = "category-button active";
+    allButton.dataset.category = "all";
 
     allButton.addEventListener("click", () => {
+
         currentCategory = "all";
         currentSpecies = "all";
 
         updateCategoryButtonState();
         createSpeciesButtons();
-
         renderSpecimens();
-    });
 
-    allButton.dataset.category = "all";
+    });
 
     container.appendChild(allButton);
 
 
-    // カテゴリボタン
+    // カテゴリ
     categories.forEach(category => {
 
-        const button = document.createElement("button");
+        const button =
+            document.createElement("button");
 
-        button.textContent = getCategoryName(category);
-        button.className = "category-button";
+        button.textContent =
+            getCategoryName(category);
 
-        button.dataset.category = category;
+        button.className =
+            "category-button";
+
+        button.dataset.category =
+            category;
 
         button.addEventListener("click", () => {
 
@@ -135,8 +156,8 @@ function createCategoryButtons() {
 
             updateCategoryButtonState();
             createSpeciesButtons();
-
             renderSpecimens();
+
         });
 
         container.appendChild(button);
@@ -153,11 +174,17 @@ function createCategoryButtons() {
 function getCategoryName(category) {
 
     const names = {
+
         bear: "クマ",
+
         fox: "キツネ",
+
         raccoon_dog: "タヌキ",
+
         deer: "シカ",
+
         serow: "ニホンカモシカ"
+
     };
 
     return names[category] || category;
@@ -170,7 +197,8 @@ function getCategoryName(category) {
 
 function createSpeciesButtons() {
 
-    const container = document.getElementById("speciesButtons");
+    const container =
+        document.getElementById("speciesButtons");
 
     if (!container) return;
 
@@ -178,26 +206,42 @@ function createSpeciesButtons() {
 
     let filtered = specimens;
 
-    // カテゴリ指定がある場合
+    // カテゴリで絞る
     if (currentCategory !== "all") {
+
         filtered = specimens.filter(
-            specimen => specimen.category === currentCategory
+            specimen =>
+                specimen.category === currentCategory
         );
     }
 
-    // 種一覧
-    const speciesList = [
-        ...new Map(
-            filtered.map(specimen => [
+
+    // species と name の組み合わせ
+    const speciesMap = new Map();
+
+    filtered.forEach(specimen => {
+
+        if (!specimen.species) return;
+
+        if (!speciesMap.has(specimen.species)) {
+
+            speciesMap.set(
                 specimen.species,
                 specimen.name
-            ])
-        )
-    ];
+            );
+        }
+    });
 
-    // 種が1種類以下ならボタンを表示しない
+
+    const speciesList =
+        [...speciesMap.entries()];
+
+
+    // 1種類以下なら種ボタンを表示しない
     if (speciesList.length <= 1) {
+
         container.style.display = "none";
+
         return;
     }
 
@@ -205,10 +249,12 @@ function createSpeciesButtons() {
 
 
     // 「すべて」
-    const allButton = document.createElement("button");
+    const allButton =
+        document.createElement("button");
 
     allButton.textContent = "すべて";
-    allButton.className = "species-button active";
+    allButton.className =
+        "species-button active";
 
     allButton.dataset.species = "all";
 
@@ -217,8 +263,8 @@ function createSpeciesButtons() {
         currentSpecies = "all";
 
         updateSpeciesButtonState();
-
         renderSpecimens();
+
     });
 
     container.appendChild(allButton);
@@ -227,20 +273,24 @@ function createSpeciesButtons() {
     // 種ボタン
     speciesList.forEach(([species, name]) => {
 
-        const button = document.createElement("button");
+        const button =
+            document.createElement("button");
 
         button.textContent = name;
-        button.className = "species-button";
 
-        button.dataset.species = species;
+        button.className =
+            "species-button";
+
+        button.dataset.species =
+            species;
 
         button.addEventListener("click", () => {
 
             currentSpecies = species;
 
             updateSpeciesButtonState();
-
             renderSpecimens();
+
         });
 
         container.appendChild(button);
@@ -249,37 +299,47 @@ function createSpeciesButtons() {
 
 
 // ==============================
-// ボタン状態更新
+// カテゴリボタン状態
 // ==============================
 
 function updateCategoryButtonState() {
 
-    const buttons = document.querySelectorAll(
-        ".category-button"
-    );
+    const buttons =
+        document.querySelectorAll(
+            ".category-button"
+        );
 
     buttons.forEach(button => {
 
         button.classList.toggle(
             "active",
-            button.dataset.category === currentCategory
+            button.dataset.category ===
+                currentCategory
         );
+
     });
 }
 
 
+// ==============================
+// 種ボタン状態
+// ==============================
+
 function updateSpeciesButtonState() {
 
-    const buttons = document.querySelectorAll(
-        ".species-button"
-    );
+    const buttons =
+        document.querySelectorAll(
+            ".species-button"
+        );
 
     buttons.forEach(button => {
 
         button.classList.toggle(
             "active",
-            button.dataset.species === currentSpecies
+            button.dataset.species ===
+                currentSpecies
         );
+
     });
 }
 
@@ -290,7 +350,8 @@ function updateSpeciesButtonState() {
 
 function renderSpecimens() {
 
-    const grid = document.getElementById("specimenGrid");
+    const grid =
+        document.getElementById("specimenGrid");
 
     if (!grid) return;
 
@@ -301,47 +362,65 @@ function renderSpecimens() {
     // フィルター
     // ------------------------------
 
-    let filtered = specimens.filter(specimen => {
+    const filtered =
+        specimens.filter(specimen => {
 
-        // カテゴリ
-        if (
-            currentCategory !== "all" &&
-            specimen.category !== currentCategory
-        ) {
-            return false;
-        }
-
-
-        // 種
-        if (
-            currentSpecies !== "all" &&
-            specimen.species !== currentSpecies
-        ) {
-            return false;
-        }
-
-
-        // 検索
-        if (currentSearch) {
-
-            const text = [
-                specimen.id,
-                specimen.name,
-                specimen.scientificName,
-                specimen.part,
-                specimen.location,
-                specimen.description
-            ]
-            .join(" ")
-            .toLowerCase();
-
-            if (!text.includes(currentSearch)) {
+            // カテゴリ
+            if (
+                currentCategory !== "all" &&
+                specimen.category !==
+                    currentCategory
+            ) {
                 return false;
             }
-        }
 
-        return true;
-    });
+
+            // 種
+            if (
+                currentSpecies !== "all" &&
+                specimen.species !==
+                    currentSpecies
+            ) {
+                return false;
+            }
+
+
+            // 検索
+            if (currentSearch) {
+
+                const text = [
+
+                    specimen.id,
+
+                    specimen.name,
+
+                    specimen.species,
+
+                    specimen.scientificName,
+
+                    specimen.part,
+
+                    specimen.location,
+
+                    specimen.description
+
+                ]
+                    .filter(Boolean)
+                    .join(" ")
+                    .toLowerCase();
+
+
+                if (!text.includes(currentSearch)) {
+
+                    return false;
+
+                }
+            }
+
+
+            return true;
+
+        });
 
 
     // ------------------------------
@@ -368,13 +447,18 @@ function renderSpecimens() {
 
     filtered.forEach(specimen => {
 
-        const species = specimen.species || "unknown";
+        const species =
+            specimen.species ||
+            "unknown";
 
         if (!groups[species]) {
+
             groups[species] = [];
+
         }
 
         groups[species].push(specimen);
+
     });
 
 
@@ -386,9 +470,11 @@ function renderSpecimens() {
         ([species, items]) => {
 
             // 種名
-            const title = document.createElement("h2");
+            const title =
+                document.createElement("h2");
 
-            title.className = "species-title";
+            title.className =
+                "species-title";
 
             title.textContent =
                 items[0].name || species;
@@ -408,13 +494,17 @@ function renderSpecimens() {
             items.forEach(specimen => {
 
                 const card =
-                    createSpecimenCard(specimen);
+                    createSpecimenCard(
+                        specimen
+                    );
 
                 speciesGrid.appendChild(card);
+
             });
 
 
             grid.appendChild(speciesGrid);
+
         }
     );
 }
@@ -426,50 +516,91 @@ function renderSpecimens() {
 
 function createSpecimenCard(specimen) {
 
-    const card = document.createElement("article");
+    const card =
+        document.createElement("article");
 
-    card.className = "specimen-card";
+    card.className =
+        "specimen-card";
 
 
     // ------------------------------
     // 3Dモデル
     // ------------------------------
 
-    const viewer = document.createElement("model-viewer");
+    const viewer =
+        document.createElement("model-viewer");
 
     viewer.src = specimen.model;
 
     viewer.alt =
         `${specimen.name} ${specimen.id} の3Dモデル`;
 
-    viewer.setAttribute("camera-controls", "");
+    viewer.setAttribute(
+        "camera-controls",
+        ""
+    );
 
-    viewer.setAttribute("auto-rotate", "");
+    viewer.setAttribute(
+        "auto-rotate",
+        ""
+    );
 
-    viewer.setAttribute("shadow-intensity", "1");
+    viewer.setAttribute(
+        "shadow-intensity",
+        "1"
+    );
 
-    viewer.setAttribute("loading", "lazy");
+    viewer.setAttribute(
+        "loading",
+        "lazy"
+    );
 
-    viewer.addEventListener("click", () => {
-        openViewer(specimen);
-    });
+
+    // モデル読み込みエラー
+    viewer.addEventListener(
+        "error",
+        () => {
+
+            console.error(
+                "3Dモデルの読み込みに失敗:",
+                specimen.model
+            );
+
+        }
+    );
+
+
+    // クリック
+    viewer.addEventListener(
+        "click",
+        () => {
+
+            openViewer(specimen);
+
+        }
+    );
 
 
     // ------------------------------
     // カード情報
     // ------------------------------
 
-    const info = document.createElement("div");
+    const info =
+        document.createElement("div");
 
-    info.className = "specimen-info";
+    info.className =
+        "specimen-info";
 
 
-    const name = document.createElement("h3");
+    // 名前
+    const name =
+        document.createElement("h3");
 
     name.textContent =
         `${specimen.name} #${specimen.id}`;
 
 
+    // 学名
     const scientificName =
         document.createElement("p");
 
@@ -480,6 +611,7 @@ function createSpecimenCard(specimen) {
         specimen.scientificName || "";
 
 
+    // 部位
     const part =
         document.createElement("p");
 
@@ -487,6 +619,7 @@ function createSpecimenCard(specimen) {
         `部位：${specimen.part || "―"}`;
 
 
+    // 採取地
     const location =
         document.createElement("p");
 
@@ -494,10 +627,7 @@ function createSpecimenCard(specimen) {
         `採取地：${specimen.location || "―"}`;
 
 
-    // ------------------------------
     // 詳細ボタン
-    // ------------------------------
-
     const button =
         document.createElement("button");
 
@@ -507,15 +637,17 @@ function createSpecimenCard(specimen) {
     button.textContent =
         "3Dモデルを見る";
 
-    button.addEventListener("click", () => {
-        openViewer(specimen);
-    });
+    button.addEventListener(
+        "click",
+        () => {
+
+            openViewer(specimen);
+
+        }
+    );
 
 
-    // ------------------------------
     // 組み立て
-    // ------------------------------
-
     info.appendChild(name);
     info.appendChild(scientificName);
     info.appendChild(part);
@@ -537,13 +669,19 @@ function createSpecimenCard(specimen) {
 function openViewer(specimen) {
 
     const modal =
-        document.getElementById("viewerModal");
+        document.getElementById(
+            "viewerModal"
+        );
 
     const modalViewer =
-        document.getElementById("modalViewer");
+        document.getElementById(
+            "modalViewer"
+        );
 
     const modalTitle =
-        document.getElementById("modalTitle");
+        document.getElementById(
+            "modalTitle"
+        );
 
     const modalScientificName =
         document.getElementById(
@@ -551,10 +689,14 @@ function openViewer(specimen) {
         );
 
     const modalPart =
-        document.getElementById("modalPart");
+        document.getElementById(
+            "modalPart"
+        );
 
     const modalLocation =
-        document.getElementById("modalLocation");
+        document.getElementById(
+            "modalLocation"
+        );
 
     const modalDescription =
         document.getElementById(
@@ -567,7 +709,14 @@ function openViewer(specimen) {
         );
 
 
-    if (!modal) return;
+    if (!modal) {
+
+        console.error(
+            "viewerModalが見つかりません"
+        );
+
+        return;
+    }
 
 
     // ------------------------------
@@ -576,11 +725,38 @@ function openViewer(specimen) {
 
     if (modalViewer) {
 
+        // 一度モデルを解除
+        modalViewer.removeAttribute(
+            "src"
+        );
+
+        // 次のモデルを設定
         modalViewer.src =
             specimen.model;
 
         modalViewer.alt =
             `${specimen.name} ${specimen.id} の3Dモデル`;
+
+
+        console.log(
+            "3Dモデル読み込み:",
+            specimen.model
+        );
+
+
+        modalViewer.addEventListener(
+            "error",
+            () => {
+
+                console.error(
+                    "モーダル3Dモデル読み込み失敗:",
+                    specimen.model
+                );
+
+            },
+            { once: true }
+        );
+
     }
 
 
@@ -592,6 +768,7 @@ function openViewer(specimen) {
 
         modalTitle.textContent =
             `${specimen.name} #${specimen.id}`;
+
     }
 
 
@@ -599,6 +776,7 @@ function openViewer(specimen) {
 
         modalScientificName.textContent =
             specimen.scientificName || "";
+
     }
 
 
@@ -606,6 +784,7 @@ function openViewer(specimen) {
 
         modalPart.textContent =
             `部位：${specimen.part || "―"}`;
+
     }
 
 
@@ -613,6 +792,7 @@ function openViewer(specimen) {
 
         modalLocation.textContent =
             `採取地：${specimen.location || "―"}`;
+
     }
 
 
@@ -620,6 +800,7 @@ function openViewer(specimen) {
 
         modalDescription.textContent =
             specimen.description || "";
+
     }
 
 
@@ -631,39 +812,46 @@ function openViewer(specimen) {
 
         downloadContainer.innerHTML = "";
 
+
         if (
             specimen.downloads &&
             specimen.downloads.length > 0
         ) {
 
-            specimen.downloads.forEach(file => {
+            specimen.downloads.forEach(
+                file => {
 
-                const link =
-                    document.createElement("a");
+                    const link =
+                        document.createElement("a");
 
-                link.href = file.url;
+                    link.href =
+                        file.url;
 
-                link.textContent =
-                    `${file.format} をダウンロード`;
+                    link.textContent =
+                        `${file.format} をダウンロード`;
 
-                link.className =
-                    "download-button";
+                    link.className =
+                        "download-button";
 
-                link.setAttribute(
-                    "download",
-                    ""
-                );
+                    link.setAttribute(
+                        "download",
+                        ""
+                    );
 
-                link.target = "_blank";
+                    downloadContainer.appendChild(
+                        link
+                    );
 
-                downloadContainer.appendChild(link);
-            });
+                }
+            );
 
         } else {
 
             downloadContainer.innerHTML =
                 "<p>ダウンロードファイルはありません。</p>";
+
         }
+
     }
 
 
@@ -673,7 +861,8 @@ function openViewer(specimen) {
 
     modal.classList.add("active");
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow =
+        "hidden";
 }
 
 
@@ -684,20 +873,32 @@ function openViewer(specimen) {
 function closeViewer() {
 
     const modal =
-        document.getElementById("viewerModal");
+        document.getElementById(
+            "viewerModal"
+        );
 
     if (!modal) return;
 
-    modal.classList.remove("active");
 
-    document.body.style.overflow = "";
+    modal.classList.remove(
+        "active"
+    );
+
+    document.body.style.overflow =
+        "";
 
 
     // 3Dモデルを解除
     const viewer =
-        document.getElementById("modalViewer");
+        document.getElementById(
+            "modalViewer"
+        );
 
     if (viewer) {
-        viewer.removeAttribute("src");
+
+        viewer.removeAttribute(
+            "src"
+        );
+
     }
 }
