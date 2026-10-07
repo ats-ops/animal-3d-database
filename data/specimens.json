@@ -8,7 +8,7 @@
     "part": "頭骨",
     "location": "北海道",
     "description": "ヒグマの頭骨3Dスキャンモデル。教育・研究用途を想定した3D標本データ。",
-    "model": "models/bear/brown-bear/SINH-MA-835.gltf",
+    "model": "models/bear/brown-bear/SINH-MA-835.glb",
     "downloads": [
       {
         "name": "STL",
@@ -31,7 +31,7 @@
     "part": "頭骨",
     "location": "北海道",
     "description": "ツキノワグマの頭骨3Dスキャンモデル。教育・研究用途を想定した3D標本データ。",
-    "model": "models/bear/asian-black-bear/SINH-MA-770.gltf",
+    "model": "models/bear/asian-black-bear/SINH-MA-770.glb",
     "downloads": [
       {
         "name": "STL",
@@ -54,7 +54,7 @@
     "part": "頭骨",
     "location": "",
     "description": "キタキツネの頭骨3Dスキャンモデル。",
-    "model": "models/kitsune/SINH-MA-1339.gltf",
+    "model": "models/kitsune/SINH-MA-1339.glb",
     "downloads": [
       {
         "name": "STL",
@@ -77,7 +77,7 @@
     "part": "頭骨",
     "location": "",
     "description": "ニホンカモシカの頭骨3Dスキャンモデル。",
-    "model": "models/kamoshika/SINH-MA-1559.gltf",
+    "model": "models/kamoshika/SINH-MA-1559.glb",
     "downloads": [
       {
         "name": "STL",
