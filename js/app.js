@@ -101,6 +101,7 @@ function createCategoryButtons() {
 
     container.innerHTML = "";
 
+    // すべて
     const buttonAll = document.createElement("button");
 
     buttonAll.type = "button";
@@ -120,7 +121,7 @@ function createCategoryButtons() {
     container.appendChild(buttonAll);
 
 
-    // 登録されているカテゴリーを取得
+    // 登録されているカテゴリー
     const categories = [
         ...new Set(
             specimens
@@ -206,13 +207,15 @@ function createSpeciesButtons() {
     let filteredSpecimens = specimens;
 
     if (currentCategory !== "all") {
+
         filteredSpecimens = specimens.filter(
-            specimen => specimen.category === currentCategory
+            specimen =>
+                specimen.category === currentCategory
         );
     }
 
 
-    // species の一覧
+    // species一覧
     const speciesList = [
         ...new Set(
             filteredSpecimens
@@ -222,7 +225,7 @@ function createSpeciesButtons() {
     ];
 
 
-    // 種類が存在しない場合
+    // 種類がない場合
     if (speciesList.length === 0) {
         return;
     }
@@ -251,7 +254,7 @@ function createSpeciesButtons() {
     container.appendChild(buttonAll);
 
 
-    // 各species
+    // 各種類
     speciesList.forEach(species => {
 
         const specimen = filteredSpecimens.find(
@@ -432,7 +435,6 @@ function renderSpecimens() {
 
         const firstSpecimen = group[0];
 
-        // 種類タイトル
         const speciesSection =
             document.createElement("section");
 
@@ -440,6 +442,7 @@ function renderSpecimens() {
             "species-section";
 
 
+        // 種類タイトル
         const speciesTitle =
             document.createElement("h2");
 
@@ -449,7 +452,6 @@ function renderSpecimens() {
         speciesTitle.textContent =
             firstSpecimen.name ||
             species;
-
 
         speciesSection.appendChild(speciesTitle);
 
@@ -491,15 +493,20 @@ function createSpecimenCard(specimen) {
         "specimen-card";
 
 
-    // ----------------------------------------
+    // ========================================
     // 3D Viewer
-    // ----------------------------------------
+    // ========================================
 
     const viewer =
         document.createElement("model-viewer");
 
     viewer.className =
         "specimen-viewer";
+
+
+    // ----------------------------------------
+    // 操作
+    // ----------------------------------------
 
     viewer.setAttribute(
         "camera-controls",
@@ -511,20 +518,59 @@ function createSpecimenCard(specimen) {
         ""
     );
 
+
+    // ----------------------------------------
+    // 照明・表示
+    // ----------------------------------------
+
+    // 影
     viewer.setAttribute(
         "shadow-intensity",
-        "1"
+        "0.8"
     );
+
+    // 白飛びを抑える
+    viewer.setAttribute(
+        "exposure",
+        "0.6"
+    );
+
+    // 環境光
+    viewer.setAttribute(
+        "environment-image",
+        "neutral"
+    );
+
+    // トーンマッピング
+    viewer.setAttribute(
+        "tone-mapping",
+        "commerce"
+    );
+
+
+    // ----------------------------------------
+    // 読み込み
+    // ----------------------------------------
 
     viewer.setAttribute(
         "loading",
         "lazy"
     );
 
+
+    // ----------------------------------------
+    // タッチ操作
+    // ----------------------------------------
+
     viewer.setAttribute(
         "touch-action",
         "pan-y"
     );
+
+
+    // ----------------------------------------
+    // AR
+    // ----------------------------------------
 
     viewer.setAttribute(
         "ar",
@@ -537,10 +583,18 @@ function createSpecimenCard(specimen) {
     );
 
 
-    // GLB読み込み
+    // ----------------------------------------
+    // GLB設定
+    // ----------------------------------------
+
     if (specimen.model) {
 
         viewer.src = specimen.model;
+
+        console.log(
+            `3Dモデル読み込み開始: ${specimen.id}`,
+            specimen.model
+        );
 
     } else {
 
@@ -550,13 +604,32 @@ function createSpecimenCard(specimen) {
     }
 
 
+    // ----------------------------------------
+    // GLB読み込み成功
+    // ----------------------------------------
+
+    viewer.addEventListener(
+        "load",
+        () => {
+
+            console.log(
+                `3Dモデル読み込み成功: ${specimen.id}`
+            );
+        }
+    );
+
+
+    // ----------------------------------------
     // GLB読み込みエラー
+    // ----------------------------------------
+
     viewer.addEventListener(
         "error",
         event => {
 
             console.error(
-                `3Dモデル読み込みエラー: ${specimen.id}`,
+                `3Dモデルの読み込みに失敗: ${specimen.id}`,
+                specimen.model,
                 event
             );
         }
@@ -566,9 +639,9 @@ function createSpecimenCard(specimen) {
     card.appendChild(viewer);
 
 
-    // ----------------------------------------
-    // 情報
-    // ----------------------------------------
+    // ========================================
+    // 標本情報
+    // ========================================
 
     const info =
         document.createElement("div");
@@ -577,7 +650,10 @@ function createSpecimenCard(specimen) {
         "specimen-info";
 
 
+    // ----------------------------------------
     // 標本名
+    // ----------------------------------------
+
     const title =
         document.createElement("h3");
 
@@ -587,7 +663,10 @@ function createSpecimenCard(specimen) {
     info.appendChild(title);
 
 
+    // ----------------------------------------
     // ID
+    // ----------------------------------------
+
     if (specimen.id) {
 
         const id =
@@ -603,7 +682,10 @@ function createSpecimenCard(specimen) {
     }
 
 
+    // ----------------------------------------
     // 学名
+    // ----------------------------------------
+
     if (specimen.scientificName) {
 
         const scientificName =
@@ -619,7 +701,10 @@ function createSpecimenCard(specimen) {
     }
 
 
+    // ----------------------------------------
     // 部位
+    // ----------------------------------------
+
     if (specimen.part) {
 
         const part =
@@ -632,7 +717,10 @@ function createSpecimenCard(specimen) {
     }
 
 
-    // 採集地
+    // ----------------------------------------
+    // 場所
+    // ----------------------------------------
+
     if (specimen.location) {
 
         const location =
@@ -645,7 +733,10 @@ function createSpecimenCard(specimen) {
     }
 
 
+    // ----------------------------------------
     // 説明
+    // ----------------------------------------
+
     if (specimen.description) {
 
         const description =
@@ -661,12 +752,9 @@ function createSpecimenCard(specimen) {
     }
 
 
-    card.appendChild(info);
-
-
-    // ----------------------------------------
+    // ========================================
     // ダウンロード
-    // ----------------------------------------
+    // ========================================
 
     if (
         specimen.downloads &&
@@ -700,13 +788,15 @@ function createSpecimenCard(specimen) {
             link.textContent =
                 `ダウンロード ${download.format || download.name || ""}`;
 
-
             downloadContainer.appendChild(link);
         });
 
 
         info.appendChild(downloadContainer);
     }
+
+
+    card.appendChild(info);
 
 
     return card;
