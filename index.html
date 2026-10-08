@@ -1,257 +1,102 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Animal 3D Database</title>
 
-    <meta
-        name="description"
-        content="動物標本の3Dモデルを閲覧・ダウンロードできるデータベース"
-    >
-
-    <!-- CSS -->
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- Google Model Viewer -->
     <script
         type="module"
-        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
-    ></script>
+        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
+    </script>
 </head>
-
 
 <body>
 
     <!-- =========================
-         ヘッダー
+         Header
     ========================== -->
-
     <header class="site-header">
-
-        <div class="header-inner">
-
-            <h1>
-                Animal 3D Database
-            </h1>
-
-            <p>
-                動物標本3Dデータベース
-            </p>
-
+        <div class="container">
+            <h1>Animal 3D Database</h1>
+            <p>動物標本3Dデータベース</p>
         </div>
-
     </header>
 
 
     <!-- =========================
-         メイン
+         Main
     ========================== -->
-
     <main class="container">
 
-
-        <!-- =====================
-             検索
-        ====================== -->
-
+        <!-- Search -->
         <section class="search-section">
 
             <input
                 type="search"
                 id="searchInput"
-                placeholder="標本番号・動物名・学名などを検索"
+                placeholder="標本名・学名・IDなどを検索"
                 autocomplete="off"
             >
 
         </section>
 
 
-        <!-- =====================
-             カテゴリ
-        ====================== -->
+        <!-- Category -->
+        <section class="filter-section">
 
-        <section class="category-section">
-
-            <h2 class="section-title">
-                動物
-            </h2>
-
-            <!--
-                app.jsがここに
-                クマ / キツネ / タヌキ / シカ
-                などを自動生成
-            -->
+            <h2>カテゴリー</h2>
 
             <div
                 id="categoryButtons"
-                class="category-buttons"
-            ></div>
-
-        </section>
-
-
-        <!-- =====================
-             種
-        ====================== -->
-
-        <section class="species-section">
-
-            <!--
-                app.jsがここに
-
-                [すべて]
-                [ヒグマ]
-                [ツキノワグマ]
-
-                などを自動生成
-            -->
-
-            <div
-                id="speciesButtons"
-                class="species-buttons"
-            ></div>
-
-        </section>
-
-
-        <!-- =====================
-             標本一覧
-        ====================== -->
-
-        <section class="specimens-section">
-
-            <div
-                id="specimenGrid"
-                class="specimen-grid"
-            >
-
-                <!--
-                    app.jsによって
-                    ここに標本が表示される
-                -->
-
+                class="filter-buttons">
             </div>
 
         </section>
 
+
+        <!-- Species -->
+        <section class="filter-section">
+
+            <h2>種類</h2>
+
+            <div
+                id="speciesButtons"
+                class="filter-buttons">
+            </div>
+
+        </section>
+
+
+        <!-- Specimens -->
+        <section class="specimens-section">
+
+            <div
+                id="specimenGrid"
+                class="specimen-grid">
+            </div>
+
+        </section>
 
     </main>
 
 
     <!-- =========================
-         3Dモデル詳細モーダル
+         Footer
     ========================== -->
-
-    <div
-        id="viewerModal"
-        class="modal"
-    >
-
-        <div class="modal-content">
-
-
-            <!-- 閉じるボタン -->
-
-            <button
-                id="closeModal"
-                class="close-button"
-                aria-label="閉じる"
-            >
-                ×
-            </button>
-
-
-            <!-- =====================
-                 3Dビューア
-            ====================== -->
-
-            <div class="modal-viewer">
-
-                <model-viewer
-                    id="modalViewer"
-                    camera-controls
-                    auto-rotate
-                    shadow-intensity="1"
-                    ar
-                    ar-modes="webxr scene-viewer quick-look"
-                    touch-action="pan-y"
-                >
-                </model-viewer>
-
-            </div>
-
-
-            <!-- =====================
-                 標本情報
-            ====================== -->
-
-            <div class="modal-info">
-
-             
-
-
-                <p
-                    id="modalScientificName"
-                    class="scientific-name"
-                >
-                </p>
-
-
-                <p id="modalPart">
-                </p>
-
-
-                <p id="modalLocation">
-                </p>
-
-
-                <p
-                    id="modalDescription"
-                    class="description"
-                >
-                </p>
-
-
-                <!-- =================
-                     ダウンロード
-                ================== -->
-
-                <div
-                    id="downloadButtons"
-                    class="download-buttons"
-                >
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         フッター
-    ========================== -->
-
     <footer class="site-footer">
 
-        <p>
-            Animal 3D Database
-        </p>
+        <div class="container">
 
-        <p>
-            3D specimen data
-        </p>
+            <p>
+                Animal 3D Database
+            </p>
+
+        </div>
 
     </footer>
 
@@ -259,11 +104,7 @@
     <!-- =========================
          JavaScript
     ========================== -->
-
-    <script
-        src="js/app.js"
-    ></script>
+    <script src="js/app.js"></script>
 
 </body>
-
 </html>
