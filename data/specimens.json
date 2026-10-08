@@ -77,17 +77,17 @@
     "part": "頭骨",
     "location": "",
     "description": "ニホンカモシカの頭骨3Dスキャンモデル。",
-    "model": "models/kamoshika/SINH-MA-1559.glb",
+    "model": "models/kamoshika/SINH-MA-1599.glb",
     "downloads": [
       {
         "name": "STL",
         "format": "STL",
-        "url": "downloads/kamoshika/SINH-MA-1559.stl"
+        "url": "downloads/kamoshika/SINH-MA-1599.stl"
       },
       {
         "name": "3MF",
         "format": "3MF",
-        "url": "downloads/kamoshika/SINH-MA-1559.3mf"
+        "url": "downloads/kamoshika/SINH-MA-1599.3mf"
       }
     ]
   }
