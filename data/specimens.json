@@ -22,6 +22,29 @@
       }
     ]
   },
+    {
+    "id": "SINH-MA-834",
+    "category": "bear",
+    "species": "brown-bear",
+    "name": "ヒグマ",
+    "scientificName": "Ursus arctos",
+    "part": "頭骨",
+    "location": "北海道",
+    "description": "ヒグマの頭骨3Dスキャンモデル。教育・研究用途を想定した3D標本データ。",
+    "model": "models/bear/brown-bear/SINH-MA-834.glb",
+    "downloads": [
+      {
+        "name": "STL",
+        "format": "STL",
+        "url": "downloads/bear/SINH-MA-834.stl"
+      },
+      {
+        "name": "3MF",
+        "format": "3MF",
+        "url": "downloads/bear/SINH-MA-834.3mf"
+      }
+    ]
+  },
   {
     "id": "SINH-MA-770",
     "category": "bear",
@@ -45,15 +68,38 @@
       }
     ]
   },
+    {
+    "id": "SINH-MA-295",
+    "category": "bear",
+    "species": "asian-black-bear",
+    "name": "ツキノワグマ",
+    "scientificName": "Ursus thibetanus",
+    "part": "頭骨",
+    "location": "北海道",
+    "description": "ツキノワグマの頭骨3Dスキャンモデル。教育・研究用途を想定した3D標本データ。",
+    "model": "models/bear/asian-black-bear/SINH-MA-295.glb",
+    "downloads": [
+      {
+        "name": "STL",
+        "format": "STL",
+        "url": "downloads/bear/SINH-MA-295.stl"
+      },
+      {
+        "name": "3MF",
+        "format": "3MF",
+        "url": "downloads/bear/SINH-MA-295.3mf"
+      }
+    ]
+  },
   {
     "id": "SINH-MA-1339",
     "category": "fox",
     "species": "red-fox",
-    "name": "キタキツネ",
+    "name": "キツネ",
     "scientificName": "Vulpes vulpes",
     "part": "頭骨",
     "location": "",
-    "description": "キタキツネの頭骨3Dスキャンモデル。",
+    "description": "キツネの頭骨3Dスキャンモデル。",
     "model": "models/kitsune/SINH-MA-1339.glb",
     "downloads": [
       {
@@ -65,6 +111,29 @@
         "name": "3MF",
         "format": "3MF",
         "url": "downloads/kitsune/SINH-MA-1339.3mf"
+      }
+    ]
+  },
+   {
+    "id": "SINH-MA-1037",
+    "category": "fox",
+    "species": "red-fox",
+    "name": "キツネ",
+    "scientificName": "Vulpes vulpes",
+    "part": "頭骨",
+    "location": "",
+    "description": "キツネの頭骨3Dスキャンモデル。",
+    "model": "models/kitsune/SINH-MA-1037.glb",
+    "downloads": [
+      {
+        "name": "STL",
+        "format": "STL",
+        "url": "downloads/kitsune/SINH-MA-1037.stl"
+      },
+      {
+        "name": "3MF",
+        "format": "3MF",
+        "url": "downloads/kitsune/SINH-MA-1037.3mf"
       }
     ]
   },
@@ -90,5 +159,79 @@
         "url": "downloads/kamoshika/SINH-MA-1599.3mf"
       }
     ]
-  }
+  },
+  
+{
+  "id": "SINH-MA-1499",
+  "category": "deer",
+  "species": "japanese-sika-deer",
+  "name": "ニホンジカ",
+  "scientificName": "Cervus nippon",
+  "part": "頭骨",
+  "location": "",
+  "description": "ニホンジカの頭骨3Dスキャンモデル。",
+  "model": "models/deer/SINH-MA-1499.glb",
+  "downloads": [
+    {
+      "name": "STL",
+      "format": "STL",
+      "url": "downloads/deer/SINH-MA-1499.stl"
+    },
+    {
+      "name": "3MF",
+      "format": "3MF",
+      "url": "downloads/deer/SINH-MA-1449.3mf"
+    }
+  ]
+},
+
+{
+  "id": "SINH-MA-1660",
+  "category": "raccoon_dog",
+  "species": "raccoon-dog",
+  "name": "タヌキ",
+  "scientificName": "Nyctereutes procyonoides",
+  "part": "頭骨",
+  "location": "",
+  "description": "タヌキの頭骨3Dスキャンモデル。",
+  "model": "models/tanuki/SINH-MA-1660.glb",
+  "downloads": [
+    {
+      "name": "STL",
+      "format": "STL",
+      "url": "downloads/tanuki/SINH-MA-1660.stl"
+    },
+    {
+      "name": "3MF",
+      "format": "3MF",
+      "url": "downloads/tanuki/SINH-MA-1660.3mf"
+    }
+  ]
+},
+  
+{
+  "id": "SINH-MA-1657",
+  "category": "raccoon_dog",
+  "species": "raccoon-dog",
+  "name": "タヌキ",
+  "scientificName": "Nyctereutes procyonoides",
+  "part": "頭骨",
+  "location": "",
+  "description": "タヌキの頭骨3Dスキャンモデル。",
+  "model": "models/tanuki/SINH-MA-1657.glb",
+  "downloads": [
+    {
+      "name": "STL",
+      "format": "STL",
+      "url": "downloads/tanuki/SINH-MA-1657.stl"
+    },
+    {
+      "name": "3MF",
+      "format": "3MF",
+      "url": "downloads/tanuki/SINH-MA-1657.3mf"
+    }
+  ]
+}
+
+
 ]
