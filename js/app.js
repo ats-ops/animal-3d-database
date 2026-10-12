@@ -81,6 +81,7 @@ function getCategoryName(category) {
         raccoon_dog: "タヌキ",
         deer: "シカ",
         serow: "ニホンカモシカ"
+     
     };
 
     return categoryNames[category] || category;
