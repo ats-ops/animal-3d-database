@@ -13,12 +13,21 @@
       {
         "name": "STL",
         "format": "STL",
-        "url": "downloads/bear/SINH-MA-835.stl"
+        "url": "downloads/bear/SINH-MA-835-up.stl"
+      },{
+        "name": "STL",
+        "format": "STL",
+        "url": "downloads/bear/SINH-MA-835-down.stl"
       },
       {
         "name": "3MF",
         "format": "3MF",
-        "url": "downloads/bear/SINH-MA-835.3mf"
+        "url": "downloads/bear/SINH-MA-835-up.3mf"
+      },
+      {
+        "name": "3MF",
+        "format": "3MF",
+        "url": "downloads/bear/SINH-MA-835-down.3mf"
       }
     ]
   },
@@ -36,12 +45,22 @@
       {
         "name": "STL",
         "format": "STL",
-        "url": "downloads/bear/SINH-MA-834.stl"
+        "url": "downloads/bear/SINH-MA-834-up.stl"
+      },
+        {
+        "name": "STL",
+        "format": "STL",
+        "url": "downloads/bear/SINH-MA-834-down.stl"
       },
       {
         "name": "3MF",
         "format": "3MF",
-        "url": "downloads/bear/SINH-MA-834.3mf"
+        "url": "downloads/bear/SINH-MA-834-up.3mf"
+      },
+        {
+        "name": "3MF",
+        "format": "3MF",
+        "url": "downloads/bear/SINH-MA-834-down.3mf"
       }
     ]
   },
@@ -59,12 +78,22 @@
       {
         "name": "STL",
         "format": "STL",
-        "url": "downloads/bear/SINH-MA-770.stl"
+        "url": "downloads/bear/SINH-MA-770-up.stl"
+      },
+        {
+        "name": "STL",
+        "format": "STL",
+        "url": "downloads/bear/SINH-MA-770-down.stl"
       },
       {
         "name": "3MF",
         "format": "3MF",
-        "url": "downloads/bear/SINH-MA-770.3mf"
+        "url": "downloads/bear/SINH-MA-770-up.3mf"
+      },
+         {
+        "name": "3MF",
+        "format": "3MF",
+        "url": "downloads/bear/SINH-MA-770-down.3mf"
       }
     ]
   },
@@ -82,12 +111,22 @@
       {
         "name": "STL",
         "format": "STL",
-        "url": "downloads/bear/SINH-MA-295.stl"
+        "url": "downloads/bear/SINH-MA-295-up.stl"
+      },
+      {
+        "name": "STL",
+        "format": "STL",
+        "url": "downloads/bear/SINH-MA-295-down.stl"
       },
       {
         "name": "3MF",
         "format": "3MF",
-        "url": "downloads/bear/SINH-MA-295.3mf"
+        "url": "downloads/bear/SINH-MA-295-up.3mf"
+      },
+            {
+        "name": "3MF",
+        "format": "3MF",
+        "url": "downloads/bear/SINH-MA-295-down.3mf"
       }
     ]
   },
@@ -105,12 +144,22 @@
       {
         "name": "STL",
         "format": "STL",
-        "url": "downloads/kitsune/SINH-MA-1339.stl"
+        "url": "downloads/kitsune/SINH-MA-1339-up.stl"
+      },
+      {
+        "name": "STL",
+        "format": "STL",
+        "url": "downloads/kitsune/SINH-MA-1339-down.stl"
       },
       {
         "name": "3MF",
         "format": "3MF",
-        "url": "downloads/kitsune/SINH-MA-1339.3mf"
+        "url": "downloads/kitsune/SINH-MA-1339-up.3mf"
+      },
+      {
+        "name": "3MF",
+        "format": "3MF",
+        "url": "downloads/kitsune/SINH-MA-1339-down.3mf"
       }
     ]
   },
@@ -128,12 +177,22 @@
       {
         "name": "STL",
         "format": "STL",
-        "url": "downloads/kitsune/SINH-MA-1037.stl"
+        "url": "downloads/kitsune/SINH-MA-1037-up.stl"
+      },
+      {
+        "name": "STL",
+        "format": "STL",
+        "url": "downloads/kitsune/SINH-MA-1037-down.stl"
       },
       {
         "name": "3MF",
         "format": "3MF",
-        "url": "downloads/kitsune/SINH-MA-1037.3mf"
+        "url": "downloads/kitsune/SINH-MA-1037-up.3mf"
+      },
+      {
+        "name": "3MF",
+        "format": "3MF",
+        "url": "downloads/kitsune/SINH-MA-1037-down.3mf"
       }
     ]
   },
@@ -151,12 +210,22 @@
       {
         "name": "STL",
         "format": "STL",
-        "url": "downloads/kamoshika/SINH-MA-1599.stl"
+        "url": "downloads/kamoshika/SINH-MA-1599-up.stl"
+      },
+       {
+        "name": "STL",
+        "format": "STL",
+        "url": "downloads/kamoshika/SINH-MA-1599-down.stl"
       },
       {
         "name": "3MF",
         "format": "3MF",
-        "url": "downloads/kamoshika/SINH-MA-1599.3mf"
+        "url": "downloads/kamoshika/SINH-MA-1599-up.3mf"
+      },
+      {
+        "name": "3MF",
+        "format": "3MF",
+        "url": "downloads/kamoshika/SINH-MA-1599-down.3mf"
       }
     ]
   },
@@ -175,12 +244,22 @@
     {
       "name": "STL",
       "format": "STL",
-      "url": "downloads/deer/SINH-MA-1499.stl"
+      "url": "downloads/deer/SINH-MA-1499-up.stl"
+    },
+    {
+      "name": "STL",
+      "format": "STL",
+      "url": "downloads/deer/SINH-MA-1499-down.stl"
     },
     {
       "name": "3MF",
       "format": "3MF",
-      "url": "downloads/deer/SINH-MA-1449.3mf"
+      "url": "downloads/deer/SINH-MA-1449-up.3mf"
+    },
+     {
+      "name": "3MF",
+      "format": "3MF",
+      "url": "downloads/deer/SINH-MA-1449-down.3mf"
     }
   ]
 },
@@ -199,12 +278,22 @@
     {
       "name": "STL",
       "format": "STL",
-      "url": "downloads/tanuki/SINH-MA-1660.stl"
+      "url": "downloads/tanuki/SINH-MA-1660-up.stl"
+    },
+    {
+      "name": "STL",
+      "format": "STL",
+      "url": "downloads/tanuki/SINH-MA-1660-down.stl"
     },
     {
       "name": "3MF",
       "format": "3MF",
-      "url": "downloads/tanuki/SINH-MA-1660.3mf"
+      "url": "downloads/tanuki/SINH-MA-1660-up.3mf"
+    },
+    {
+      "name": "3MF",
+      "format": "3MF",
+      "url": "downloads/tanuki/SINH-MA-1660-down.3mf"
     }
   ]
 },
@@ -223,12 +312,22 @@
     {
       "name": "STL",
       "format": "STL",
-      "url": "downloads/tanuki/SINH-MA-1657.stl"
+      "url": "downloads/tanuki/SINH-MA-1657-up.stl"
+    },
+    {
+      "name": "STL",
+      "format": "STL",
+      "url": "downloads/tanuki/SINH-MA-1657-down.stl"
     },
     {
       "name": "3MF",
       "format": "3MF",
-      "url": "downloads/tanuki/SINH-MA-1657.3mf"
+      "url": "downloads/tanuki/SINH-MA-1657-up.3mf"
+    },
+    {
+      "name": "3MF",
+      "format": "3MF",
+      "url": "downloads/tanuki/SINH-MA-1657-down.3mf"
     }
   ]
 }
